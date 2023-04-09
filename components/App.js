@@ -23,18 +23,21 @@ export const themeCollections = {
 
 let App = () => {
 
-    const [theme, setTheme] = React.useState(themeCollections.darkTheme);
+    const [theme, setTheme] = React.useState(themeCollections.lightTheme);
     const [currentSection, setCurrentSection] = React.useState("Dashboard");
 
+    const handleThemeChange = theme => {
+        setTheme(theme);
+    }
     const handleSectionChange = sectionName => {
         setCurrentSection(sectionName);
     } 
-    
+
     return (
         <Theme.Provider value={
             {
                 theme, 
-                setTheme : setTheme,
+                setTheme : handleThemeChange,
                 currentSection,
                 setCurrentSection : handleSectionChange
             }
