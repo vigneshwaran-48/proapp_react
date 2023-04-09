@@ -1,0 +1,24 @@
+.shadow-screen{
+    position: fixed;
+    top: 65px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid;
+}
+
+.settings-page {
+    max-width: 450px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    right: 0;
+}
+
+@media screen and (max-width: 500px) {
+    .shadow-screen {
+        bottom: 7%;
+    }
+}
