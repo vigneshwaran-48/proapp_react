@@ -82,3 +82,17 @@
 #theme-switch-input:checked + .theme-switch-ball {
     left: 54%;
 }
+#setting-icon {
+    color: rgb(232,131,43);
+}
+#moon-icon {
+    color: rgb(243,117,247);
+}
+
+@media screen and (max-width: 380px) {
+
+    .min-profile-photo {
+        width: 80px;
+        height: 80px;
+    }
+}

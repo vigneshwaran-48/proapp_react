@@ -50,12 +50,12 @@ let MinProfile = props => {
                     </div>
                     <div className="settings-options">
                         <div className="edit-profile-button common-setting-button x-axis-flex">
-                            <i className="fa-solid fa-gear"></i>
+                            <i id="setting-icon" className="fa-solid fa-gear"></i>
                             <p className="setting-button-text">Edit</p>
                             <span className="setting-button-right-icon">{">"}</span>
                         </div>
                         <div className="theme-profile-button common-setting-button x-axis-flex">
-                            <i className="fa fa-light fa-moon"></i>
+                            <i id="moon-icon" className="fa fa-light fa-moon"></i>
                             <p className="setting-button-text">Dark Theme</p>
                             <label 
                                 style={{
