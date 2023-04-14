@@ -4,6 +4,20 @@
     justify-content: space-between;
     padding: 5px 10px;
 }
+.shadow-screen{
+    position: fixed;
+    top: 65px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    transform: translateX(100%);
+    transition: 0.5s;
+    z-index: 10;
+}
+.show-top-right-section {
+    transform: translateX(0%);
+}
 .user-profile-image {
     width: 50px;
     height: 50px;
@@ -12,16 +26,44 @@
 .section-name{
     font-size: 25px;
 }
-
-.nav-link {
-    font-size: 25px;
-    color: rgba(0, 0, 0, 0.8);
+.top-header-icon {
+    font-size: 20px;
+    padding: 0px 10px;
     border-bottom: 5px solid white;
-    transition: 0.5s;
-    padding: 3px 10px;
-    margin: 0px 5px;
+    cursor: pointer;
 }
-.active-nav-link {
-    color : rgb(64,142,238);
+.active-header-icon {
+    color: rgb(64,142,238);
     border-color: rgb(64,142,238);
+}
+.top-header-icon-input {
+    display: none;
+}
+.active-top-screen {
+    transform: translateX(0%);
+}
+
+.right-side-inner-page {
+    position: relative;
+}
+
+@media screen and (max-width: 500px) {
+    .shadow-screen {
+        bottom: 7%;
+    }
+}
+@media screen and (max-height: 920px) {
+    .shadow-screen {
+        top: 57px;
+    }
+}
+@media screen and (max-height: 850px) {
+    .shadow-screen {
+        top: 56px;
+    }
+}
+@media screen and (max-height: 667px) {
+    .shadow-screen {
+        bottom: 8%;
+    }
 }

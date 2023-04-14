@@ -7,7 +7,7 @@ import Projects from "./main-body-comp/Projects";
 import Tasks from "./main-body-comp/Tasks";
 import Settings from "./main-body-comp/right-side-comp/Settings";
 import Notification from "./main-body-comp/right-side-comp/Notification";
-import Profile from "./main-body-comp/right-side-comp/Profile";
+import Profile from "./main-body-comp/right-side-comp/MinProfile";
 
 const MainBody = () => {
     return (
@@ -16,8 +16,6 @@ const MainBody = () => {
             <Route path="projects" element={<Projects />} />    
             <Route path="tasks" element={<Tasks />} />
             <Route path="chat" element={<Chat />} />
-            <Route path="settings" element={<Settings />} />    
-            <Route path="notification" element={<Notification />} />
             <Route path="profile" element={<Profile />} />
         </Routes>
     )

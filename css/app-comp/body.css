@@ -5,7 +5,20 @@
 }
 
 @media screen and (max-width: 500px) {
+
+    @media screen and (max-height: 915px) {
+        .app-body {
+            height: 93%;
+        }   
+    }
+    @media screen and (max-height: 670px) {
+        .app-body {
+            height: 91%;
+        }   
+    }
+}
+@media screen and (max-height: 655px) {
     .app-body {
-        height: 93%;
+        height: 90%;
     }
 }

@@ -2,8 +2,11 @@ import React from "react";
 import Body from "./app-comp/Body";
 import SideNavBar from "./app-comp/SideNavBar";
 import "../css/app.css";
+import { getCurrentUserDetails } from "../api/CurrentUser";
 
 export const Theme = React.createContext();
+export const BasicDetails = React.createContext();
+
 export const themeCollections = {
     darkTheme : {
         color : "white",
@@ -23,8 +26,22 @@ export const themeCollections = {
 
 let App = () => {
 
-    const [theme, setTheme] = React.useState(themeCollections.lightTheme);
+    const [theme, setTheme] = React.useState(themeCollections.darkTheme);
     const [currentSection, setCurrentSection] = React.useState("Dashboard");
+    const [userDetails, setUserDetails] = React.useState({
+        userId : 0,
+        userName : "",
+        userImage : "",
+        friends : [],
+        communities : []
+    });
+    React.useEffect(() => {
+        setUserDetails(getCurrentUserDetails());
+    }, []);
+
+    const updatedUserDetails = updatedDetails => {
+        setUserDetails(prevDetails => ({...prevDetails, updatedDetails}));
+    }
 
     const handleThemeChange = theme => {
         setTheme(theme);
@@ -34,19 +51,26 @@ let App = () => {
     } 
 
     return (
-        <Theme.Provider value={
+        <BasicDetails.Provider value={
             {
-                theme, 
-                setTheme : handleThemeChange,
-                currentSection,
-                setCurrentSection : handleSectionChange
+                userDetails,
+                updatedUserDetails
             }
         }>
-            <div className="app x-axis-flex flex-space-between-x ">
-                <SideNavBar />
-                <Body />
-            </div>
-        </Theme.Provider>
+            <Theme.Provider value={
+                {
+                    theme, 
+                    setTheme : handleThemeChange,
+                    currentSection,
+                    setCurrentSection : handleSectionChange
+                }
+            }>
+                <div className="app x-axis-flex flex-space-between-x ">
+                    <SideNavBar />
+                    <Body />
+                </div>
+            </Theme.Provider>
+        </BasicDetails.Provider>
     );
 }
 
