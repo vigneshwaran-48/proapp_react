@@ -5,8 +5,6 @@ import Chat from "./main-body-comp/Chat";
 import DashBoard from "./main-body-comp/DashBoard";
 import Projects from "./main-body-comp/Projects";
 import Tasks from "./main-body-comp/Tasks";
-import Settings from "./main-body-comp/right-side-comp/Settings";
-import Notification from "./main-body-comp/right-side-comp/Notification";
 import Profile from "./main-body-comp/right-side-comp/MinProfile";
 
 const MainBody = () => {

@@ -26,7 +26,10 @@ export const themeCollections = {
 
 let App = () => {
 
-    const [theme, setTheme] = React.useState(themeCollections.darkTheme);
+    const [theme, setTheme] = React.useState({
+        isDark : false,
+        theme : themeCollections.lightTheme
+    });
     const [currentSection, setCurrentSection] = React.useState("Dashboard");
     const [userDetails, setUserDetails] = React.useState({
         userId : 0,
@@ -44,7 +47,7 @@ let App = () => {
     }
 
     const handleThemeChange = theme => {
-        setTheme(theme);
+        setTheme(prevTheme => ({isDark : !prevTheme.isDark, theme}));
     }
     const handleSectionChange = sectionName => {
         setCurrentSection(sectionName);
@@ -59,7 +62,8 @@ let App = () => {
         }>
             <Theme.Provider value={
                 {
-                    theme, 
+                    theme : theme.theme, 
+                    isDark : theme.isDark,
                     setTheme : handleThemeChange,
                     currentSection,
                     setCurrentSection : handleSectionChange

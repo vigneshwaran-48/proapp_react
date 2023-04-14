@@ -1,13 +1,20 @@
 import React, { useContext } from "react";
 import "../../../../../css/app-comp/body-comp/main-body-comp/right-side-comp/profile.css";
 import "../../../../../css/app-comp/body-comp/main-body-comp/right-side-comp/settings.css";
-import { BasicDetails, Theme } from "../../../../App";
+import { BasicDetails, Theme, themeCollections } from "../../../../App";
 import 'font-awesome/css/font-awesome.min.css';
 
 let MinProfile = props => {
 
-    const { theme } = useContext(Theme);
+    const { theme, isDark, setTheme } = useContext(Theme);
     const { userDetails } = useContext(BasicDetails);
+
+    const changeTheme = () => {
+        isDark 
+            ? setTheme(themeCollections.lightTheme) 
+            : setTheme(themeCollections.darkTheme)
+        // setTheme
+    }
 
     return (
             <div 
@@ -42,7 +49,31 @@ let MinProfile = props => {
                         <p>Settings</p>
                     </div>
                     <div className="settings-options">
-                        <button className="edit-profile-button common-setting-button">Edit</button>
+                        <div className="edit-profile-button common-setting-button x-axis-flex">
+                            <i className="fa-solid fa-gear"></i>
+                            <p className="setting-button-text">Edit</p>
+                            <span className="setting-button-right-icon">{">"}</span>
+                        </div>
+                        <div className="theme-profile-button common-setting-button x-axis-flex">
+                            <i className="fa fa-light fa-moon"></i>
+                            <p className="setting-button-text">Dark Theme</p>
+                            <label 
+                                style={{
+                                    backgroundColor : isDark
+                                                    ? "rgb(64,142,238)"
+                                                    : "rgba(0, 0, 0, 0.1)"
+                                }}      
+                                htmlFor="theme-switch-input" 
+                                className="theme-switch-label x-axis-flex">
+                                <input 
+                                    type="checkbox" 
+                                    id="theme-switch-input"
+                                    checked={isDark}
+                                    onChange={changeTheme}
+                                />
+                                <span className="theme-switch-ball"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>

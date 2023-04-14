@@ -44,9 +44,41 @@
     width: 100%;
     border: none;
     padding: 7px;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
 }
-.edit-profile-button {
+.common-setting-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.setting-button-text {
+    flex-grow: 1;
+    padding-left: 5px;
+}
+.setting-button-right-icon {
+    font-size: 24px;
+}
+#theme-switch-input {
+    display: none;
+}
 
+.theme-switch-label {
+    padding: 15px 30px;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    align-items: center;
+}
+.theme-switch-ball {
+    padding: 13px 13px;
+    left: 3%;
+    border-radius: 50%;
+    position: absolute;
+    transition: 0.5s;
+    background-color: white;
+}
+#theme-switch-input:checked + .theme-switch-ball {
+    left: 54%;
 }
