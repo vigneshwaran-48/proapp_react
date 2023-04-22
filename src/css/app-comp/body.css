@@ -1,0 +1,25 @@
+.app-body {
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 500px) {
+
+    @media screen and (max-height: 915px) {
+        .app-body {
+            height: 93.5%;
+        }   
+    }
+    @media screen and (max-height: 670px) {
+        .app-body {
+            height: 91%;
+        }   
+    }
+}
+@media screen and (max-height: 655px) {
+    .app-body {
+        height: 100%;
+    }
+}

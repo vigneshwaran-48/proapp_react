@@ -1,0 +1,100 @@
+.profile-page {
+    max-width: 450px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    right: 0;
+}
+.min-profile-top {
+    width: 100%;
+    height: 25%;
+}
+.min-profile-bottom {
+    width: 100%;
+    height: 75%;
+    align-items: center;
+}
+
+.min-profile-photo {
+    width: 100px;
+    height: 100px;
+}
+.min-profile-name {
+    font-size: 25px;
+    padding: 10px;
+    margin-left: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.setting-heading {
+    width: 90%;
+    font-size: 20px;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.settings-options {
+    width: 90%;
+}
+.common-setting-button {
+    width: 100%;
+    border: none;
+    padding: 7px;
+    font-size: 20px;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0px;
+}
+.common-setting-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.setting-button-text {
+    flex-grow: 1;
+    padding-left: 5px;
+}
+.setting-button-right-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+#theme-switch-input {
+    display: none;
+}
+
+.theme-switch-label {
+    padding: 15px 30px;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    align-items: center;
+    cursor: pointer;
+}
+.theme-switch-ball {
+    padding: 13px 13px;
+    left: 3%;
+    border-radius: 50%;
+    position: absolute;
+    transition: 0.5s;
+    background-color: white;
+}
+#theme-switch-input:checked + .theme-switch-ball {
+    left: 54%;
+}
+#setting-icon {
+    color: rgb(232,131,43);
+}
+#moon-icon {
+    color: rgb(243,117,247);
+}
+
+@media screen and (max-width: 380px) {
+
+    .min-profile-photo {
+        width: 80px;
+        height: 80px;
+    }
+}
