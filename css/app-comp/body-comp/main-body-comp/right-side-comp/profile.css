@@ -59,6 +59,7 @@
 }
 .setting-button-right-icon {
     font-size: 24px;
+    cursor: pointer;
 }
 #theme-switch-input {
     display: none;
@@ -70,6 +71,7 @@
     border-radius: 15px;
     position: relative;
     align-items: center;
+    cursor: pointer;
 }
 .theme-switch-ball {
     padding: 13px 13px;

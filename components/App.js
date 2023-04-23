@@ -6,6 +6,7 @@ import { getCurrentUserDetails } from "../api/CurrentUser";
 
 export const Theme = React.createContext();
 export const BasicDetails = React.createContext();
+export const Undo = React.createContext();
 
 export const themeCollections = {
     darkTheme : {
@@ -13,15 +14,23 @@ export const themeCollections = {
         backgroundColor : "#2B2B2B",
         subBackgroundColor: "#423F3E",
         navIconClass : "dark-theme-icons",
-        borderColor : "white"
+        borderColor : "white",
+        innerProjectBoxBackgroundColor : "#413F42"
     },
     lightTheme : {
         color : "black",
         backgroundColor : "rgb(254,255,254)",
         subBackgroundColor: "rgba(0, 0, 0, 0.07)",
         navIconClass : "light-theme-icons",
-        borderColor : "#FEFCF3"
+        borderColor : "#FEFCF3",
+        innerProjectBoxBackgroundColor : "rgba(0, 0, 0, 0.07)"
     }
+}
+const undo = {
+    performUndo : () => console.log("Undo ...")
+}
+const updateUndo = undoFunc => {
+    undo.performUndo = undoFunc;
 }
 
 let App = () => {
@@ -40,6 +49,9 @@ let App = () => {
     });
     React.useEffect(() => {
         setUserDetails(getCurrentUserDetails());
+        window.addEventListener("click", event => {
+
+        });
     }, []);
 
     const updatedUserDetails = updatedDetails => {
@@ -54,27 +66,32 @@ let App = () => {
     } 
 
     return (
-        <BasicDetails.Provider value={
-            {
-                userDetails,
-                updatedUserDetails
-            }
-        }>
-            <Theme.Provider value={
+        <Undo.Provider value={{
+            undo,
+            updateUndo
+        }}>
+            <BasicDetails.Provider value={
                 {
-                    theme : theme.theme, 
-                    isDark : theme.isDark,
-                    setTheme : handleThemeChange,
-                    currentSection,
-                    setCurrentSection : handleSectionChange
+                    userDetails,
+                    updatedUserDetails
                 }
             }>
-                <div className="app x-axis-flex flex-space-between-x ">
-                    <SideNavBar />
-                    <Body />
-                </div>
-            </Theme.Provider>
-        </BasicDetails.Provider>
+                <Theme.Provider value={
+                    {
+                        theme : theme.theme, 
+                        isDark : theme.isDark,
+                        setTheme : handleThemeChange,
+                        currentSection,
+                        setCurrentSection : handleSectionChange
+                    }
+                }>
+                    <div className="app x-axis-flex flex-space-between-x ">
+                        <SideNavBar />
+                        <Body />
+                    </div>
+                </Theme.Provider>
+            </BasicDetails.Provider>
+        </Undo.Provider>
     );
 }
 

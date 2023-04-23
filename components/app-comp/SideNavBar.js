@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "../../css/app-comp/sidenavbar.css";
 import 'font-awesome/css/font-awesome.min.css';
-import { Theme } from "../App";
+import { Theme, Undo } from "../App";
 
 let SideNavBar = () => {
     const themeWrapper = useContext(Theme);
     const theme = themeWrapper.theme;
-
+    
     return (
         <nav 
             className={`y-axis-flex`} 

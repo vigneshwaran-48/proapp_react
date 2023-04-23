@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../../../../css/app-comp/body-comp/main-body-comp/project-comp/project-box.css";
+import { Theme } from "../../../../App";
 
 let ProjectBox = props => {
 
     const details = props.projectDetails;
+    const {theme} = useContext(Theme);
 
     const userImages = details.users.map((elem, index) => {
-        return (
+        return index <= 2 && (
             <div 
-                className={`person-image-wrapper person-${index + 1}`}
+                className={`person-image-wrapper person-${index + 1} background-image-div`}
                 key={`pro-box-${details.projectId}-${elem.userId}`}
-            >
-                <div 
-                    className="person-image" 
-                    style={{
-                        backgroundImage : elem.url
-                    }}>
-                </div>
-            </div>
+                style={{
+                        backgroundImage : `url(${elem.url})`
+            }}></div>
         );
     });
+    // If users count is greater than 3 then this will take care
+    details.users.length > 2 && userImages.push((
+        <div 
+                className={`person-image-wrapper person-4 background-image-div x-axis-flex flex-center`}
+                key="extra-projects-photo"
+                style={{
+                    backgroundColor : theme.backgroundColor
+                }}
+        >
+            <p style={{fontSize: "20px"}}>{`+${details.users.length - 3}`}</p>        
+        </div>
+    ));
 
     return (
         <div 
+            style={{
+                backgroundColor : theme.innerProjectBoxBackgroundColor
+            }}
             className="main-box y-axis-flex" 
-            id="project-359"
+            id={`project-${details.projectId}`}
         >
             <div className="top-box-detail x-axis-flex">
                 <h2 className="box-name">
@@ -54,10 +66,14 @@ let ProjectBox = props => {
             <div className="box-description">
                 {details.description}
             </div>
-            <div className="box-percentage-wrapper">
+            <div 
+                style={{
+                    backgroundColor : theme.backgroundColor
+                }}
+                className="box-percentage-wrapper"
+            >
                 <div 
                     className="box-percentage-value" 
-                    style={{}}
                 >
                     {details.percentage}%
                 </div>
