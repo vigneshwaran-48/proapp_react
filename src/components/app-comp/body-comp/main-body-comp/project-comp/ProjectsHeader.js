@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Theme, Undo } from "../../../../App";
 import "../../../../../css/app-comp/body-comp/main-body-comp/project-comp/project-header.css";
 
@@ -6,14 +6,22 @@ const ProjectsHeader = props => {
 
     const { theme } = useContext(Theme);
     const { updateUndo } = useContext(Undo);
-    const filterButton = useRef(null);
-
+    const [formData, setFormData] = useState({
+        searchInput : ""
+    });
     const handleFilterClick = () => {
         updateUndo(event => {      
             const elem = document.querySelector("#projects-filter-input");
             elem !== event.target 
+                && elem != null 
                 && (elem.checked = false);
         });
+    }
+    
+    const handleSearchChange = event => {
+        const { name, value } = event.target;
+        setFormData(prevFormData => ({...prevFormData, [name] : value}));
+        props.searchProject(value);
     }
     const handleFilterButtonClicks = event => {
         const { id } = event.target;
@@ -49,9 +57,12 @@ const ProjectsHeader = props => {
                     ></i>
                 </label>
                 <input 
+                    value={formData.searchInput}
                     style={{
                         color: theme.color,
                     }}
+                    onChange={handleSearchChange}
+                    name="searchInput"
                     id="projects-seacrh-input"
                     className="projects-search-bar"
                 />

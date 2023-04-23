@@ -15,7 +15,8 @@ const GetProjects = {
                 title : "Project 01",
                 description : "Hello",
                 percentage : 40,
-                projectId : 1
+                projectId : 1,
+                type : "YET_TO_START"
             },
             {
                 users : [
@@ -31,7 +32,8 @@ const GetProjects = {
                 title : "Project 02",
                 description : "Test",
                 percentage : 40,
-                projectId : 2
+                projectId : 2,
+                type : "YET_TO_START"
             }
         ]
     },
@@ -65,7 +67,8 @@ const GetProjects = {
                 title : "Project 87687",
                 description : "complete this",
                 percentage : 40,
-                projectId : 3
+                projectId : 3,
+                type : "IN_PROGRESS"
             }
         ]
     },
@@ -86,7 +89,8 @@ const GetProjects = {
                 title : "Completed project",
                 description : "project completed ...",
                 percentage : 40,
-                projectId : 4
+                projectId : 4,
+                type : "COMPLETED"
             }
         ]
     },
@@ -102,7 +106,8 @@ const GetProjects = {
                 title : "Delayed project",
                 description : "project completed ...",
                 percentage : 40,
-                projectId : 5
+                projectId : 5,
+                type : "DELAYED"
             }
         ]
     }

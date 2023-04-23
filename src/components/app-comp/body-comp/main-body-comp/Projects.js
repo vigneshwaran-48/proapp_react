@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import GetProjects from "../../../../api/projects/GetProjects";
+import SearchProjects from "../../../../api/projects/SeacrhProjects";
 import "../../../../css/app-comp/body-comp/main-body-comp/projects.css";
 import "../../../../css/app-comp/body-comp/mainbody.css";
 import { Theme } from "../../../App";
@@ -41,6 +42,31 @@ let Projects = () => {
         window.addEventListener("load", resizeFunc);//This is for page refreshing
     }, []);
 
+    const handleProjectsSearch = searchQuery => {
+        setYetToStart([]);
+        setCompleted([]);
+        setInProgress([]);
+        setDelayed([]);
+        let results = SearchProjects.searchProject({
+            query : searchQuery,
+            projectType : displayBoxes
+        });
+            results.forEach(elem => {
+                if(elem.type === YET_TO_START) {
+                    setYetToStart(prevElem => ([...prevElem, elem]));
+                }
+                else if(elem.type === IN_PROGRESS) {
+                    setInProgress(prevElem => ([...prevElem, elem]));
+                }
+                else if(elem.type === COMPLETED) {
+                    setCompleted(prevElem => ([...prevElem, elem]));
+                }
+                else if(elem.type === DELAYED) {
+                    setDelayed(prevElem => ([...prevElem, elem]));
+                }
+            })
+        } 
+
     useEffect(() => {
         const yetToStartProjects = GetProjects.getYetToStartProjects();
         const inProgressProjects = GetProjects.getInProgressProjects();
@@ -75,7 +101,10 @@ let Projects = () => {
                 color : theme.color
             }}
         >
-            <ProjectsHeader updateCurrentTab={setDisplayBoxes} />
+            <ProjectsHeader 
+                searchProject={handleProjectsSearch} 
+                updateCurrentTab={setDisplayBoxes}     
+            />
             
             <div className="projects-body x-axis-flex">
             {
